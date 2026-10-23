@@ -1,0 +1,20 @@
+{
+	"schemaVersion": 1,
+	"id": "banhammer",
+	"version": "${version}",
+	"name": "Banhammer",
+	"description": "Een hamer waarmee operators spelers kunnen bannen door ze te slaan.",
+	"authors": ["Jij"],
+	"license": "MIT",
+	"icon": "assets/banhammer/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": ["com.example.banhammer.BanhammerMod"]
+	},
+	"depends": {
+		"fabricloader": ">=0.19.5",
+		"minecraft": "~26.3",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}
