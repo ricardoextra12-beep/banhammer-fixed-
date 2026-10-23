@@ -266,7 +266,7 @@ public final class AdminPanel {
 						"tp " + self + " " + name)
 				.cmd(11, Role.ADMIN, Items.ENDER_EYE, "Haal " + name + " naar jou", ChatFormatting.DARK_PURPLE,
 						"tp " + name + " " + self)
-				.cmd(12, Role.MODERATOR, Items.COPPER_BLOCK, "Waarschuw met bliksem", ChatFormatting.YELLOW,
+				.cmd(12, Role.MODERATOR, Items.IRON_BLOCK, "Waarschuw met bliksem", ChatFormatting.YELLOW,
 						"title " + name + " title {text:\"WAARSCHUWING\",color:\"red\",bold:true}",
 						"title " + name + " subtitle {text:\"Let op je gedrag!\",color:\"yellow\"}",
 						"execute at " + name + " run summon minecraft:lightning_bolt ~6 ~ ~")
@@ -280,7 +280,7 @@ public final class AdminPanel {
 					p.closeContainer();
 					return true;
 				})
-				.cmd(15, Role.ADMIN, Items.COPPER_BLOCK, "Bliksem recht op " + name, ChatFormatting.DARK_RED,
+				.cmd(15, Role.ADMIN, Items.IRON_BLOCK, "Bliksem recht op " + name, ChatFormatting.DARK_RED,
 						"execute at " + name + " run summon minecraft:lightning_bolt ~ ~ ~")
 
 				.cmd(19, Role.ADMIN, Items.IRON_SWORD, "Survival voor " + name, ChatFormatting.GRAY, "gamemode survival " + name)
@@ -298,7 +298,7 @@ public final class AdminPanel {
 					return true;
 				})
 				.go(29, Role.ADMIN, Items.CHEST, "Inventaris-template toepassen", ChatFormatting.WHITE, p -> openTemplatePicker(p, id))
-				.add(31, Role.MODERATOR, named(Items.RED_WOOL, "Stuur naar spawn", ChatFormatting.GREEN), p -> {
+				.add(31, Role.MODERATOR, named(Items.REDSTONE_BLOCK, "Stuur naar spawn", ChatFormatting.GREEN), p -> {
 					sendTo(p, name, "spawn");
 					return false;
 				})
@@ -377,7 +377,7 @@ public final class AdminPanel {
 				.cmd(11, Role.ADMIN, Items.COAL, "Nacht", ChatFormatting.DARK_GRAY, "time set night")
 				.cmd(12, Role.ADMIN, Items.FEATHER, "Helder weer", ChatFormatting.WHITE, "weather clear")
 				.cmd(13, Role.ADMIN, Items.WATER_BUCKET, "Regen", ChatFormatting.BLUE, "weather rain")
-				.cmd(14, Role.ADMIN, Items.COPPER_BLOCK, "Onweer", ChatFormatting.DARK_PURPLE, "weather thunder")
+				.cmd(14, Role.ADMIN, Items.IRON_BLOCK, "Onweer", ChatFormatting.DARK_PURPLE, "weather thunder")
 				.cmd(15, Role.ADMIN, Items.POPPY, "Moeilijkheid: peaceful", ChatFormatting.GREEN, "difficulty peaceful")
 				.cmd(16, Role.ADMIN, Items.IRON_SWORD, "Moeilijkheid: normal", ChatFormatting.YELLOW, "difficulty normal")
 				.cmd(17, Role.ADMIN, Items.ZOMBIE_HEAD, "Moeilijkheid: hard", ChatFormatting.RED, "difficulty hard")
@@ -406,7 +406,7 @@ public final class AdminPanel {
 	public static void openSpawn(ServerPlayer v) {
 		String self = nameOf(v);
 		new Page(v)
-				.add(10, Role.MODERATOR, named(Items.RED_WOOL, "Teleporteer mezelf naar spawn", ChatFormatting.GREEN), p -> {
+				.add(10, Role.MODERATOR, named(Items.REDSTONE_BLOCK, "Teleporteer mezelf naar spawn", ChatFormatting.GREEN), p -> {
 					sendTo(p, self, "spawn");
 					return false;
 				})
@@ -442,12 +442,12 @@ public final class AdminPanel {
 		new Page(v)
 				.info(10, named(Items.CAKE, "Raining Tacos: " + (active ? "ACTIEF" : "uit"),
 						active ? ChatFormatting.GREEN : ChatFormatting.RED))
-				.add(12, Role.ADMIN, named(Items.LIME_WOOL, "Start Raining Tacos", ChatFormatting.GREEN), p -> {
+				.add(12, Role.ADMIN, named(Items.EMERALD_BLOCK, "Start Raining Tacos", ChatFormatting.GREEN), p -> {
 					Events.start(p.level().getServer(), nameOf(p));
 					openEvents(p);
 					return true;
 				})
-				.add(13, Role.ADMIN, named(Items.RED_WOOL, "Stop Raining Tacos", ChatFormatting.RED), p -> {
+				.add(13, Role.ADMIN, named(Items.REDSTONE_BLOCK, "Stop Raining Tacos", ChatFormatting.RED), p -> {
 					Events.stop(p.level().getServer(), nameOf(p));
 					openEvents(p);
 					return true;
@@ -527,11 +527,11 @@ public final class AdminPanel {
 	public static void openTemplateDetail(ServerPlayer v, String templateName) {
 		new Page(v)
 				.info(4, named(Items.CHEST, templateName, ChatFormatting.WHITE))
-				.add(11, Role.ADMIN, named(Items.LIME_WOOL, "Pas toe op mezelf", ChatFormatting.GREEN), p -> {
+				.add(11, Role.ADMIN, named(Items.EMERALD_BLOCK, "Pas toe op mezelf", ChatFormatting.GREEN), p -> {
 					applyTemplate(p, templateName, p.getUUID());
 					return false;
 				})
-				.add(15, Role.ADMIN, named(Items.RED_WOOL, "Verwijder template", ChatFormatting.RED), p -> {
+				.add(15, Role.ADMIN, named(Items.REDSTONE_BLOCK, "Verwijder template", ChatFormatting.RED), p -> {
 					Templates.delete(templateName);
 					StaffLog.record(nameOf(p), "template verwijderd: " + templateName);
 					openTemplates(p);
